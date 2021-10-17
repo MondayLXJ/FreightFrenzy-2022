@@ -30,21 +30,21 @@ public class DrivetrainSubsystem extends SubsystemBase {
         rightMotorBack.set(-1.0);
     }
 
-    /*
+
     public void left(){
-        leftMotorFront.set(1.0);
+        leftMotorFront.set(-1.0);
         leftMotorBack.set(1.0);
         rightMotorFront.set(1.0);
-        rightMotorBack.set(1.0);
+        rightMotorBack.set(-1.0);
     }
 
     public void right(){
         leftMotorFront.set(1.0);
-        leftMotorBack.set(1.0);
-        rightMotorFront.set(1.0);
+        leftMotorBack.set(-1.0);
+        rightMotorFront.set(-1.0);
         rightMotorBack.set(1.0);
     }
-    */
+
     public void stop() {
         leftMotorBack.stopMotor();
         rightMotorBack.stopMotor();
