@@ -17,17 +17,17 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void forward(){
-        leftMotorFront.set(1.0);
-        leftMotorBack.set(1.0);
-        rightMotorFront.set(1.0);
-        rightMotorBack.set(1.0);
+        leftMotorFront.set(0.5);
+        leftMotorBack.set(0.5);
+        rightMotorFront.set(0.5);
+        rightMotorBack.set(0.5);
     }
 
     public void backward(){
-        leftMotorFront.set(-1.0);
-        leftMotorBack.set(-1.0);
-        rightMotorFront.set(-1.0);
-        rightMotorBack.set(-1.0);
+        leftMotorFront.set(-0.5);
+        leftMotorBack.set(-0.5);
+        rightMotorFront.set(-0.5);
+        rightMotorBack.set(-0.5);
     }
 
 

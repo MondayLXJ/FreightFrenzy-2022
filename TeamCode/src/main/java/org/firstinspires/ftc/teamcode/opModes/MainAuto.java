@@ -46,14 +46,20 @@ import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 
             //this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
             //this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
-            //this.driveForwardCommand = new DriveForwardCommand(this.drivetrainSubsystem);
-            //this.driveBackwardCommand = new DriveBackwardCommand(this.drivetrainSubsystem);
+            this.driveForwardCommand = new DriveForwardCommand(this.drivetrainSubsystem);
+            this.driveBackwardCommand = new DriveBackwardCommand(this.drivetrainSubsystem);
 
             //driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
             //driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
             //driver.getGamepadButton(GamepadKeys.Button.A).whenHeld(this.driveForwardCommand);
             //driver.getGamepadButton(GamepadKeys.Button.B).whenHeld(this.driveBackwardCommand);
-            drivetrainSubsystem.right();
+            driveForwardCommand.execute();
+            sleep(2000);
+            drivetrainSubsystem.stop();
+            sleep(2000);
+            driveBackwardCommand.execute();
+            sleep(2000);
+            drivetrainSubsystem.stop();
         }
     }
 
