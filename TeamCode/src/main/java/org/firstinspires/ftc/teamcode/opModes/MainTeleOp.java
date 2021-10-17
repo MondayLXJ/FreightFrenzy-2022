@@ -37,19 +37,19 @@ public class MainTeleOp extends CommandOpMode {
 
     @Override
     public void initialize() {
-        // this.intakeMotor = new Motor(hardwareMap, "intake");
+        this.intakeMotor = new Motor(hardwareMap, "intake");
         this.leftMotorFront = new Motor(hardwareMap, "leftMotorFront");
         this.rightMotorFront = new Motor(hardwareMap, "rightMotorFront");
         this.leftMotorBack = new Motor(hardwareMap, "leftMotorBack");
         this.rightMotorBack = new Motor(hardwareMap, "rightMotorBack");
-        // this.intakeSubsystem = new IntakeSubsystem(this.intakeMotor);
+        this.intakeSubsystem = new IntakeSubsystem(this.intakeMotor);
 
-        // this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
-        // this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
+        this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
+        this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
         driver = new GamepadEx(gamepad1);
 
-        //driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
-        //driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
+        driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
+        driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
         driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.driveForwardCommand);
         driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.driveBackwardCommand);
     }
