@@ -39,12 +39,10 @@ public class MainTeleOp extends CommandOpMode {
     @Override
     public void initialize() {
         //this.intakeMotor = new Motor(hardwareMap, "intake");
-        this.leftMotorFront = new Motor(hardwareMap, "leftMotorFront");
-        this.rightMotorFront = new Motor(hardwareMap, "rightMotorFront");
-        this.leftMotorBack = new Motor(hardwareMap, "leftMotorBack");
-        this.rightMotorBack = new Motor(hardwareMap, "rightMotorBack");
+        this.leftMotorFront = new Motor(hardwareMap, "leftMotor");
+        this.rightMotorFront = new Motor(hardwareMap, "rightMotor");
         //this.intakeSubsystem = new IntakeSubsystem(this.intakeMotor);
-        this.drivetrainSubsystem = new DrivetrainSubsystem(this.leftMotorBack, this.leftMotorFront, this.rightMotorBack, this.rightMotorFront);
+        this.drivetrainSubsystem = new DrivetrainSubsystem(this.leftMotorFront, this.rightMotorFront);
 
         //this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
         //this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
@@ -54,7 +52,7 @@ public class MainTeleOp extends CommandOpMode {
 
         //driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
         //driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
-        driver.getGamepadButton(GamepadKeys.Button.A).whenHeld(this.driveForwardCommand);
-        driver.getGamepadButton(GamepadKeys.Button.B).whenHeld(this.driveBackwardCommand);
+        driver.getGamepadButton(GamepadKeys.Button.Y).whenHeld(this.driveForwardCommand);
+        driver.getGamepadButton(GamepadKeys.Button.X).whenHeld(this.driveBackwardCommand);
     }
 }
