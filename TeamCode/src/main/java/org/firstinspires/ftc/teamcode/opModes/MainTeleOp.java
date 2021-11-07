@@ -19,7 +19,7 @@ import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
 
 
 @TeleOp
-public class MainTeleOp extends CommandOpMode {
+public class  MainTeleOp extends CommandOpMode {
     //motors
     private Motor intakeMotor,  leftMotorFront, leftMotorBack, rightMotorFront,  rightMotorBack;
     private Servo armServo;
