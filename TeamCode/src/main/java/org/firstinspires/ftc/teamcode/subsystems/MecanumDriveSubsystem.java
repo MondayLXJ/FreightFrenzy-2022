@@ -13,11 +13,11 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 import java.util.List;
 
-public class TankDriveSubsystem extends SubsystemBase {
+public class MecanumDriveSubsystem extends SubsystemBase {
     private final SampleMecanumDrive drive;
     private final boolean fieldCentric;
 
-    public TankDriveSubsystem(SampleMecanumDrive drive, boolean isFieldCentric){
+    public MecanumDriveSubsystem(SampleMecanumDrive drive, boolean isFieldCentric){
         this.drive = drive;
         fieldCentric = isFieldCentric;
     }

@@ -9,16 +9,16 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.commands.arm.DumpArmCommand;
 import org.firstinspires.ftc.teamcode.commands.arm.ResetArmCommand;
-import org.firstinspires.ftc.teamcode.commands.drive.DriveBackwardCommand;
-import org.firstinspires.ftc.teamcode.commands.drive.DriveForwardCommand;
+import org.firstinspires.ftc.teamcode.commands.drive.MecanumDriveCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.IntakeCommand;
 import org.firstinspires.ftc.teamcode.commands.intake.OuttakeCommand;
+import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.subsystems.ArmSubsystem;
-import org.firstinspires.ftc.teamcode.subsystems.DrivetrainSubsystem;
 import org.firstinspires.ftc.teamcode.subsystems.IntakeSubsystem;
+import org.firstinspires.ftc.teamcode.subsystems.MecanumDriveSubsystem;
 
 
-@TeleOp
+@TeleOp(name = "TeleOp")
 public class  MainTeleOp extends CommandOpMode {
     //motors
     private Motor intakeMotor,  leftMotorFront, leftMotorBack, rightMotorFront,  rightMotorBack;
@@ -26,7 +26,7 @@ public class  MainTeleOp extends CommandOpMode {
 
     //subsystems
     private IntakeSubsystem intakeSubsystem;
-    private DrivetrainSubsystem drivetrainSubsystem;
+    private MecanumDriveSubsystem mecanumDriveSubsystem;
     private ArmSubsystem armSubsystem;
 
     //commands
@@ -34,8 +34,7 @@ public class  MainTeleOp extends CommandOpMode {
     private OuttakeCommand outtakeCommand;
     private DumpArmCommand dumpArmCommand;
     private ResetArmCommand resetArmCommand;
-    private DriveForwardCommand driveForwardCommand;
-    private DriveBackwardCommand driveBackwardCommand;
+    private MecanumDriveCommand mecanumDriveCommand;
 
     //gamepads
     private GamepadEx driver;
@@ -48,21 +47,24 @@ public class  MainTeleOp extends CommandOpMode {
         //this.armServo = hardwareMap.get(Servo.class, "armServo");
 
         this.intakeSubsystem = new IntakeSubsystem(this.intakeMotor);
-        this.drivetrainSubsystem = new DrivetrainSubsystem(this.leftMotorFront, this.rightMotorFront);
+        this.mecanumDriveSubsystem = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
         //this.armSubsystem = new ArmSubsystem(this.armServo);
 
         this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
         this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
-        this.driveForwardCommand = new DriveForwardCommand(this.drivetrainSubsystem);
-        this.driveBackwardCommand = new DriveBackwardCommand(this.drivetrainSubsystem);
+        this.mecanumDriveCommand = new MecanumDriveCommand(this.mecanumDriveSubsystem, () -> -driver.getLeftY(),
+                driver::getLeftX, driver::getRightX
+        );
         //this.dumpArmCommand = new DumpArmCommand(this.armSubsystem);
         //this.resetArmCommand = new ResetArmCommand(this.armSubsystem);
         driver = new GamepadEx(gamepad1);
 
         driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
         driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
-        driver.getGamepadButton(GamepadKeys.Button.Y).whenHeld(this.driveForwardCommand);
-        driver.getGamepadButton(GamepadKeys.Button.X).whenHeld(this.driveBackwardCommand);
+
+        register(this.mecanumDriveSubsystem);
+        this.mecanumDriveSubsystem.setDefaultCommand(this.mecanumDriveCommand);
+
         //driver.getGamepadButton(GamepadKeys.Button.A).whenPressed(
         //        armSubsystem.isDumping() ? this.resetArmCommand : this.dumpArmCommand
         //);
