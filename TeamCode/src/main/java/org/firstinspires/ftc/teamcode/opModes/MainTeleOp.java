@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.opModes;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
-import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -46,15 +45,15 @@ public class  MainTeleOp extends CommandOpMode {
 
     @Override
     public void initialize() {
-        this.intakeMotor = new Motor(hardwareMap, "intake");
+        //this.intakeMotor = new Motor(hardwareMap, "intake");
         //this.armServo = hardwareMap.get(Servo.class, "armServo");
 
-        this.intakeSubsystem = new IntakeSubsystem(this.intakeMotor);
+        //this.intakeSubsystem = new IntakeSubsystem(this.intakeMotor);
         this.mecanumDriveSubsystem = new MecanumDriveSubsystem(new SampleMecanumDrive(hardwareMap), false);
         //this.armSubsystem = new ArmSubsystem(this.armServo);
 
-        this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
-        this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
+        //this.intakeCommand = new IntakeCommand(this.intakeSubsystem);
+        //this.outtakeCommand = new OuttakeCommand(this.intakeSubsystem);
         driver = new GamepadEx(gamepad1);
         this.mecanumDriveCommand = new MecanumDriveCommand(this.mecanumDriveSubsystem, () -> -driver.getLeftY(),
                 driver::getLeftX, driver::getRightX
@@ -63,8 +62,8 @@ public class  MainTeleOp extends CommandOpMode {
         //this.resetArmCommand = new ResetArmCommand(this.armSubsystem);
 
 
-        driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
-        driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
+        //driver.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER).whenHeld(this.intakeCommand);
+        //driver.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).whenHeld(this.outtakeCommand);
 
         register(this.mecanumDriveSubsystem);
         this.mecanumDriveSubsystem.setDefaultCommand(this.mecanumDriveCommand);
