@@ -22,8 +22,6 @@ public class  MainTeleOp extends CommandOpMode {
     private Motor intakeMotor;
     public Servo arm = null;
 
-
-
     //subsystems
     private IntakeSubsystem intakeSubsystem;
     private MecanumDriveSubsystem mecanumDriveSubsystem;

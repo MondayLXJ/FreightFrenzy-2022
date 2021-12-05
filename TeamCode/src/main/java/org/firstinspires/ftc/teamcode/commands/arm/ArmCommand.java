@@ -27,7 +27,6 @@ public class ArmCommand extends CommandBase {
             subsystem.setGoal(1);
             level++;
             telemetry.addData("Help", level);
-
         } else if (level == 2) {
             subsystem.setGoal(10);
             level = 0;
