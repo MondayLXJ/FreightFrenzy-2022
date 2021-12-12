@@ -10,7 +10,7 @@ public class ArmSubsystemNoPID extends CommandBase {
         this.armMotor = motor;
     }
 
-    public void in() {
+    public void increaseLevel() {
         armMotor.set(1.0);
     }
 

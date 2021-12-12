@@ -18,7 +18,7 @@ public class ArmCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() {
+    public void execute() {
         if (level == 0) {
             subsystem.setGoal(0.5);
             level++;
