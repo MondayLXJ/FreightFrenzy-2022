@@ -22,15 +22,15 @@ public class ArmCommand extends CommandBase {
         if (level == 0) {
             subsystem.setGoal(0.5);
             level++;
-            telemetry.addData("Help", level);
+            telemetry.addData("Level", level);
         } else if (level == 1) {
             subsystem.setGoal(1);
             level++;
-            telemetry.addData("Help", level);
+            telemetry.addData("Level", level);
         } else if (level == 2) {
             subsystem.setGoal(10);
             level = 0;
-            telemetry.addData("Help", level);
+            telemetry.addData("Level", level);
 
         }
     }
