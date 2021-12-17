@@ -13,11 +13,17 @@ public class ArmSubsystemNoPID extends CommandBase {
     }
 
     public void raise() {
-        armMotor.set(1.0);
+        timer.start();
+        while(!timer.done()) {
+            armMotor.set(0.5);
+        }
     }
 
     public void reduce() {
-        armMotor.set(-1.0);
+        timer.start();
+        while(!timer.done()) {
+            armMotor.set(-0.5);
+        }
     }
 
     public void stop() {

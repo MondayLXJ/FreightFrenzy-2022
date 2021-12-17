@@ -36,7 +36,7 @@ public class ArmNoPIDTest extends CommandOpMode {
 
         this.driver = new GamepadEx(gamepad1);
 
-        driver.getGamepadButton(GamepadKeys.Button.Y).whenPressed(reduceCommand);
-        driver.getGamepadButton(GamepadKeys.Button.X).whenPressed(raiseCommand);
+        driver.getGamepadButton(GamepadKeys.Button.Y).whenHeld(reduceCommand);
+        driver.getGamepadButton(GamepadKeys.Button.X).whenHeld(raiseCommand);
     }
 }
